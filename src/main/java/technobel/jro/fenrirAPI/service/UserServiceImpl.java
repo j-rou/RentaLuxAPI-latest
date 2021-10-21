@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import technobel.jro.fenrirAPI.repository.UserRepository;
 
 @Service
-public class UserServiceImpl implements UserDetailsService {
+public class UserServiceImpl  implements UserDetailsService {
+
+
 
     public final UserRepository repository;
 
@@ -23,6 +25,9 @@ public class UserServiceImpl implements UserDetailsService {
 
 
     }
+
+
+
 
 
 }

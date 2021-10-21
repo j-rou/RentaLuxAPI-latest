@@ -24,7 +24,6 @@ public class DataBaseFiller implements InitializingBean {
     private final UserRepository userRepository;
     private final EquipementRepository equipementRepository;
 
-
     private final PasswordEncoder encoder;
 
     public DataBaseFiller(ClanRepository clanRepository,
@@ -227,11 +226,11 @@ public class DataBaseFiller implements InitializingBean {
     ///////////
         ParticipantEntity participant = new ParticipantEntity();
 
-        participant.setHero(heroRepository.getById(1));
+        participant.setHero(hero1);
         participant.setAddress("Rue du fleuve 15 / 6800 Libramont");
         participant.setFirstName("John");
         participant.setLastName("Wick");
-        participant.setHeroClass(heroRepository.getById(1).getHeroClass());
+        participant.setHeroClass(hero1.getHeroClass());
 
 
         participant = participantRepository.save(participant);

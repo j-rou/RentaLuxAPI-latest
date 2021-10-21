@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class UserEntity implements UserDetails {
+public class UserEntity implements UserDetails  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +45,8 @@ public class UserEntity implements UserDetails {
     @Column(nullable = false)
     private boolean enabled;
 
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream()
@@ -52,6 +54,9 @@ public class UserEntity implements UserDetails {
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
+
+
+
 
 
 }

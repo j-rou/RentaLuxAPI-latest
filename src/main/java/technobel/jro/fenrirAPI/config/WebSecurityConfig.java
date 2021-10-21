@@ -11,15 +11,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig  extends WebSecurityConfigurerAdapter  {
 
-    /*
-    private final PasswordEncoder encoder;
 
-    public WebSecurityConfig(PasswordEncoder encoder) {
-        this.encoder = encoder;
-    }
-   */
 
     private final UserDetailsService service;
 
@@ -29,12 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    /*
-        auth.inMemoryAuthentication()
-                .withUser("admin").password(encoder.encode("pass")).authorities("ADMIN","USER")
-                .and()
-                .withUser("user").password(encoder.encode("pass")).authorities("USER");
-    */
+
         auth.userDetailsService( service );
 
     }
@@ -53,13 +42,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET,"/**").hasAuthority("USER")
                 .anyRequest().permitAll();
 
-        /*  IDEM
-        http.authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/xxx/**").hasAuthority("USER")
-                .antMatchers("/xxx/**").hasAuthority("ADMIN")
-                .anyRequest().permitAll();
-        */
+        }
 
 
-    }
+
+
+
 }
