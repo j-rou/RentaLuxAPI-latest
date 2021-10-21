@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Hero")
+@RequestMapping("/hero")
 public class HeroController {
 
     private final HeroService service;

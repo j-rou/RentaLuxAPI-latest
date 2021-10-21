@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Skills")
+@RequestMapping("/skills")
 public class SkillController {
 
     private final SkillService service;

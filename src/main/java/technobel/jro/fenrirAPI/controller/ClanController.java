@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Clan")
+@RequestMapping("/clan")
 public class ClanController {
 
     private final ClanService service;

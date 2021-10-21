@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Plot")
+@RequestMapping("/plot")
 public class PlotController {
 
     private final PlotService service;

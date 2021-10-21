@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Rpg")
+@RequestMapping("/rpg")
 public class RpgController {
 
     private final RpgService service;

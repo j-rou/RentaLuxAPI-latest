@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Participant")
+@RequestMapping("/participant")
 public class ParticipantController {
 
     private final ParticipantService service;
