@@ -13,7 +13,7 @@ public class RpgDTO {
 
     private int id;
 
-    private PlotEntity plot;
+    private int plotEntityId;
 
     private LocalDate startDate;
 

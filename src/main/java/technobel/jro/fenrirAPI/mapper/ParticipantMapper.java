@@ -22,9 +22,8 @@ public class ParticipantMapper {
                 .lastName(entity.getLastName())
                 .firstName(entity.getFirstName())
                 .address(entity.getAddress())
-                .hero(entity.getHero())
-                .heroClass(entity.getHeroClass())
-                //.subscription(entity.getSubscription())
+                .heroEntityId(entity.getHero().getId())
+                .heroClassEntityId(entity.getHeroClass().getId())
                 .build();
     }
 
@@ -41,7 +40,6 @@ public class ParticipantMapper {
         Participant.setAddress(form.getAddress());
         Participant.setHero(form.getHero());
         Participant.setHeroClass(form.getHeroClass());
-        //Participant.setSubscription(form.getSubscription());
 
 
         return Participant;

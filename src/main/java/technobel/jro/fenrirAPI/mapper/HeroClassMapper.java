@@ -6,6 +6,8 @@ import technobel.jro.fenrirAPI.models.entity.HeroClassEntity;
 import technobel.jro.fenrirAPI.models.form.ClanForm;
 import technobel.jro.fenrirAPI.models.form.HeroClassForm;
 
+import java.util.stream.Collectors;
+
 
 @Service
 public class HeroClassMapper {
@@ -19,7 +21,7 @@ public class HeroClassMapper {
         return HeroClassDTO.builder()
                 .id( entity.getId() )
                 .name( entity.getName() )
-                .availableEquipement( entity.getAvailableEquipement() )
+                .availableEquipementId( entity.getAvailableEquipement().stream().mapToInt( e -> e.getId() ).toArray() )
                 .build();
     }
 

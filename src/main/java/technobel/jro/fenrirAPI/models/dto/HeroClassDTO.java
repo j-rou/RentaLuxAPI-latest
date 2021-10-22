@@ -17,7 +17,7 @@ public class HeroClassDTO {
     @NotBlank
     private String name;
     @NotBlank
-    private List<EquipementEntity> availableEquipement;
+    private int[] availableEquipementId;
 
 
 }

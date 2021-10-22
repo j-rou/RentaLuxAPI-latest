@@ -18,9 +18,9 @@ public class ParticipantDTO {
     private String firstName;
     private String address;
 
-    private HeroEntity hero;
+    private int heroEntityId;
 
-    private HeroClassEntity heroClass;
+    private int heroClassEntityId;
 
 
 

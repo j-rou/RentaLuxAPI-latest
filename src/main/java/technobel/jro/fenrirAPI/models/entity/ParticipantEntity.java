@@ -37,6 +37,11 @@ public class ParticipantEntity {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<RpgEntity> rpgList;
 
+    @ManyToOne
+    private UserEntity userWhoSubscribed;
+
+
+
 
 }
 

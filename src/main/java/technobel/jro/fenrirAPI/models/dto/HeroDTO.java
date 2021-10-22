@@ -16,11 +16,11 @@ public class HeroDTO {
 
     private String name;
 
-    private ClanEntity clan;
+    private int clanEntityId;
 
-    private HeroClassEntity heroClass;
+    private int heroClassEntityId;
 
-    private List<SkillEntity> skills;
+    private int[] skillsEntityId;
 
 
 }

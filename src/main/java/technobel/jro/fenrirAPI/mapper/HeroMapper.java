@@ -18,9 +18,9 @@ public class HeroMapper {
         return HeroDTO.builder()
                 .id( entity.getId() )
                 .name( entity.getName() )
-                .clan( entity.getClan() )
-                .heroClass(entity.getHeroClass())
-                .skills(entity.getSkills())
+                .clanEntityId( entity.getClan().getId() )
+                .heroClassEntityId(entity.getHeroClass().getId())
+                .skillsEntityId(entity.getSkills().stream().mapToInt( e -> e.getId() ).toArray())
                 .build();
     }
 

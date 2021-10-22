@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,6 +36,12 @@ public class UserEntity implements UserDetails  {
 
     @ElementCollection (fetch = FetchType.EAGER)
     private List<String> roles;
+
+
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany
+    private List<ParticipantEntity> subscribedParticipant;
+
 
 
     @Column(nullable = false)

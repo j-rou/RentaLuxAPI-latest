@@ -17,7 +17,7 @@ public class RpgMapper {
 
         return RpgDTO.builder()
                 .id(entity.getId())
-                .plot(entity.getPlot())
+                .plotEntityId(entity.getPlot().getId())
                 .startDate(entity.getStartDate())
                 .endDate(entity.getEndDate())
                 .location(entity.getLocation())

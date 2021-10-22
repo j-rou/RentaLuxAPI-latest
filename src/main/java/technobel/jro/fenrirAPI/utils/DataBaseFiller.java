@@ -58,6 +58,8 @@ public class DataBaseFiller implements InitializingBean {
         user1.setUsername("sftjo");
         user1.setPassword(encoder.encode("pass"));
         user1.setRoles(List.of("USER"));
+        user1.setSubscribedParticipant(null);
+
         user1.setEnabled(true);
         user1.setAccountNonLocked(true);
         user1.setAccountNonExpired(true);
@@ -68,6 +70,8 @@ public class DataBaseFiller implements InitializingBean {
         user2.setUsername("admin");
         user2.setPassword(encoder.encode("root"));
         user2.setRoles(List.of("ADMIN","USER"));
+        user1.setSubscribedParticipant(null);
+
         user2.setEnabled(true);
         user2.setAccountNonLocked(true);
         user2.setAccountNonExpired(true);
@@ -223,16 +227,26 @@ public class DataBaseFiller implements InitializingBean {
 
 
     ///////////
-        ParticipantEntity participant = new ParticipantEntity();
+        ParticipantEntity participant1 = new ParticipantEntity();
+        participant1.setHero(hero1);
+        participant1.setAddress("Rue du fleuve 15 / 6800 Libramont");
+        participant1.setFirstName("John");
+        participant1.setLastName("Wick");
+        participant1.setHeroClass(hero1.getHeroClass());
+        participant1.setUserWhoSubscribed(user2);
+        participant1 = participantRepository.save(participant1);
 
-        participant.setHero(hero1);
-        participant.setAddress("Rue du fleuve 15 / 6800 Libramont");
-        participant.setFirstName("John");
-        participant.setLastName("Wick");
-        participant.setHeroClass(hero1.getHeroClass());
+
+        ParticipantEntity participant2 = new ParticipantEntity();
+        participant2.setHero(hero2);
+        participant2.setAddress("Rue du lac 15 / 6840 Bertrix");
+        participant2.setFirstName("Al");
+        participant2.setLastName("Super");
+        participant2.setHeroClass(hero2.getHeroClass());
+        participant2.setUserWhoSubscribed(user2);
+        participant2 = participantRepository.save(participant2);
 
 
-        participant = participantRepository.save(participant);
 
     ///////////
 
