@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url : jdbc:h2:mem:LivreDB
+    url : jdbc:h2:mem:RentaLuxDB
     username : user
     password : pass
 
