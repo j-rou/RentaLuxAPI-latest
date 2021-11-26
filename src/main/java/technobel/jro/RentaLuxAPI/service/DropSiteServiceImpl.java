@@ -4,29 +4,29 @@ package technobel.jro.RentaLuxAPI.service;
 import org.springframework.stereotype.Service;
 import technobel.jro.RentaLuxAPI.exceptions.ElementAlreadyExistsException;
 import technobel.jro.RentaLuxAPI.exceptions.ElementNotFoundException;
-import technobel.jro.RentaLuxAPI.mapper.ProfileMapper;
-import technobel.jro.RentaLuxAPI.models.dto.ProfileDTO;
-import technobel.jro.RentaLuxAPI.models.entity.ProfileEntity;
-import technobel.jro.RentaLuxAPI.models.form.ProfileForm;
-import technobel.jro.RentaLuxAPI.repository.ProfileRepository;
+import technobel.jro.RentaLuxAPI.mapper.DropSiteMapper;
+import technobel.jro.RentaLuxAPI.models.dto.DropSiteDTO;
+import technobel.jro.RentaLuxAPI.models.entity.DropSiteEntity;
+import technobel.jro.RentaLuxAPI.models.form.DropSiteForm;
+import technobel.jro.RentaLuxAPI.repository.DropSiteRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service("Profileservice")
-public class ProfileServiceImpl implements ProfileService {
+@Service("DropSiteservice")
+public class DropSiteServiceImpl implements DropSiteService {
 
-    private final ProfileMapper mapper;
-    private final ProfileRepository repository;
+    private final DropSiteMapper mapper;
+    private final DropSiteRepository repository;
 
-    public ProfileServiceImpl(ProfileMapper mapper, ProfileRepository repository) {
+    public DropSiteServiceImpl(DropSiteMapper mapper, DropSiteRepository repository) {
         this.mapper = mapper;
         this.repository = repository;
     }
 
 
     @Override
-    public List<ProfileDTO> getAll() {
+    public List<DropSiteDTO> getAll() {
         return repository.findAll()
             .stream()
             .map(mapper::toDTO)
@@ -34,7 +34,7 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public ProfileDTO getOne(int id){
+    public DropSiteDTO getOne(int id){
         return repository.findById(id)
                 .map(mapper::toDTO)
                 .orElseThrow(ElementNotFoundException::new);
@@ -42,11 +42,11 @@ public class ProfileServiceImpl implements ProfileService {
 
 
     @Override
-    public ProfileDTO insert(ProfileForm form){
+    public DropSiteDTO insert(DropSiteForm form){
         if( repository.existsById(form.getId()) )
             throw new ElementAlreadyExistsException();
 
-        ProfileEntity toInsert = mapper.formToEntity(form);
+        DropSiteEntity toInsert = mapper.formToEntity(form);
 
         toInsert = repository.save(toInsert);
 
@@ -54,8 +54,8 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public ProfileDTO delete(int id){
-        ProfileEntity toDelete = repository.findById(id)
+    public DropSiteDTO delete(int id){
+        DropSiteEntity toDelete = repository.findById(id)
                 .orElseThrow(ElementNotFoundException::new);
 
         repository.delete(toDelete);
@@ -65,20 +65,13 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public ProfileDTO update(int id, ProfileForm form){
+    public DropSiteDTO update(int id, DropSiteForm form){
 
-        ProfileEntity toUpdate = repository.findById(id)
+        DropSiteEntity toUpdate = repository.findById(id)
                 .orElseThrow(ElementNotFoundException::new);
 
         toUpdate.setId(form.getId());
         toUpdate.setAddress(form.getAddress());
-        toUpdate.setFirstName(form.getFirstName());
-        toUpdate.setLastName(form.getLastName());
-        toUpdate.setEmail(form.getEmail());
-        toUpdate.setTel(form.getTel());
-        toUpdate.setTva(form.getTva());
-        toUpdate.setRentalsId(form.getRentalsId());
-
 
         toUpdate = repository.save(toUpdate);
 

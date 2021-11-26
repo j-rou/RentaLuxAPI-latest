@@ -1,5 +1,6 @@
 package technobel.jro.RentaLuxAPI.models.form;
 
+
 import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 
@@ -7,24 +8,16 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 @Validated
-public class ProfileForm {
+public class VehiculeForm {
+
 
     private int id;
     @NotBlank
-    private String address;
+    private String brand;
     @NotBlank
-    private String firstName;
+    private String model;
     @NotBlank
-    private String lastName;
-    @NotBlank
-    private String email;
-    @NotBlank
-    private String tel;
-
-    private String tva;
-
-    private int[] rentalsId;
-
+    private String category;
 
 
 }

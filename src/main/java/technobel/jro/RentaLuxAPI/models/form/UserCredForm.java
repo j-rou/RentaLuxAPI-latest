@@ -7,23 +7,16 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 @Validated
-public class ProfileForm {
+public class UserCredForm {
+
 
     private int id;
     @NotBlank
-    private String address;
-    @NotBlank
-    private String firstName;
-    @NotBlank
-    private String lastName;
-    @NotBlank
     private String email;
     @NotBlank
-    private String tel;
-
-    private String tva;
-
-    private int[] rentalsId;
+    private String password;
+    @NotBlank
+    private String accountType;
 
 
 

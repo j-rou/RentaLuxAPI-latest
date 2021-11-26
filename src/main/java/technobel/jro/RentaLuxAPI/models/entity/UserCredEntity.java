@@ -22,11 +22,15 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class UserEntity implements UserDetails  {
+public class UserCredEntity implements UserDetails  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
+
+    @Column(unique = true, nullable = false)
+    private String username;
+
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -63,7 +67,7 @@ public class UserEntity implements UserDetails  {
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
 

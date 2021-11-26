@@ -4,29 +4,29 @@ package technobel.jro.RentaLuxAPI.service;
 import org.springframework.stereotype.Service;
 import technobel.jro.RentaLuxAPI.exceptions.ElementAlreadyExistsException;
 import technobel.jro.RentaLuxAPI.exceptions.ElementNotFoundException;
-import technobel.jro.RentaLuxAPI.mapper.ProfileMapper;
-import technobel.jro.RentaLuxAPI.models.dto.ProfileDTO;
-import technobel.jro.RentaLuxAPI.models.entity.ProfileEntity;
-import technobel.jro.RentaLuxAPI.models.form.ProfileForm;
-import technobel.jro.RentaLuxAPI.repository.ProfileRepository;
+import technobel.jro.RentaLuxAPI.mapper.VehiculeMapper;
+import technobel.jro.RentaLuxAPI.models.dto.VehiculeDTO;
+import technobel.jro.RentaLuxAPI.models.entity.VehiculeEntity;
+import technobel.jro.RentaLuxAPI.models.form.VehiculeForm;
+import technobel.jro.RentaLuxAPI.repository.VehiculeRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service("Profileservice")
-public class ProfileServiceImpl implements ProfileService {
+@Service("Vehiculeservice")
+public class VehiculeServiceImpl implements VehiculeService {
 
-    private final ProfileMapper mapper;
-    private final ProfileRepository repository;
+    private final VehiculeMapper mapper;
+    private final VehiculeRepository repository;
 
-    public ProfileServiceImpl(ProfileMapper mapper, ProfileRepository repository) {
+    public VehiculeServiceImpl(VehiculeMapper mapper, VehiculeRepository repository) {
         this.mapper = mapper;
         this.repository = repository;
     }
 
 
     @Override
-    public List<ProfileDTO> getAll() {
+    public List<VehiculeDTO> getAll() {
         return repository.findAll()
             .stream()
             .map(mapper::toDTO)
@@ -34,7 +34,7 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public ProfileDTO getOne(int id){
+    public VehiculeDTO getOne(int id){
         return repository.findById(id)
                 .map(mapper::toDTO)
                 .orElseThrow(ElementNotFoundException::new);
@@ -42,11 +42,11 @@ public class ProfileServiceImpl implements ProfileService {
 
 
     @Override
-    public ProfileDTO insert(ProfileForm form){
+    public VehiculeDTO insert(VehiculeForm form){
         if( repository.existsById(form.getId()) )
             throw new ElementAlreadyExistsException();
 
-        ProfileEntity toInsert = mapper.formToEntity(form);
+        VehiculeEntity toInsert = mapper.formToEntity(form);
 
         toInsert = repository.save(toInsert);
 
@@ -54,8 +54,8 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public ProfileDTO delete(int id){
-        ProfileEntity toDelete = repository.findById(id)
+    public VehiculeDTO delete(int id){
+        VehiculeEntity toDelete = repository.findById(id)
                 .orElseThrow(ElementNotFoundException::new);
 
         repository.delete(toDelete);
@@ -65,20 +65,15 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public ProfileDTO update(int id, ProfileForm form){
+    public VehiculeDTO update(int id, VehiculeForm form){
 
-        ProfileEntity toUpdate = repository.findById(id)
+        VehiculeEntity toUpdate = repository.findById(id)
                 .orElseThrow(ElementNotFoundException::new);
 
         toUpdate.setId(form.getId());
-        toUpdate.setAddress(form.getAddress());
-        toUpdate.setFirstName(form.getFirstName());
-        toUpdate.setLastName(form.getLastName());
-        toUpdate.setEmail(form.getEmail());
-        toUpdate.setTel(form.getTel());
-        toUpdate.setTva(form.getTva());
-        toUpdate.setRentalsId(form.getRentalsId());
-
+        toUpdate.setBrand(form.getBrand());
+        toUpdate.setModel(form.getModel());
+        toUpdate.setCategory(form.getCategory());
 
         toUpdate = repository.save(toUpdate);
 

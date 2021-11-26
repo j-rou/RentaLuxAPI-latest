@@ -17,8 +17,13 @@ public class ProfileMapper {
 
         return ProfileDTO.builder()
                 .id( entity.getId() )
-                .name( entity.getName() )
-                .bio( entity.getBio() )
+                .address( entity.getAddress() )
+                .firstName( entity.getFirstName() )
+                .lastName(entity.getLastName())
+                .email(entity.getEmail())
+                .tel(entity.getTel())
+                .tva(entity.getTva())
+                .rentalsId(entity.getRentalsId())
                 .build();
     }
 
@@ -31,8 +36,13 @@ public class ProfileMapper {
         ProfileEntity Profile = new ProfileEntity();
 
         Profile.setId(form.getId());
-        Profile.setName(form.getName());
-        Profile.setBio(form.getBio());
+        Profile.setAddress( form.getAddress() );
+        Profile.setFirstName( form.getFirstName() );
+        Profile.setLastName(form.getLastName());
+        Profile.setEmail(form.getEmail());
+        Profile.setTel(form.getTel());
+        Profile.setTva(form.getTva());
+        Profile.setRentalsId(form.getRentalsId());
 
         return Profile;
     }

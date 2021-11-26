@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="location")
@@ -20,16 +21,18 @@ public class LocationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private int profileId;
+    private int vehiculeId;
+    private int dropSiteId;
 
-    private String address;
+    private Date startDate;
+    private Date endDate;
 
-    private String firstName;
-    private String lastName;
-    private String email;
+    private boolean upclassable;
+    private int upClassVehiculeId;
 
-    private String tel;
-    private String tva;
-    private int[] rentalsId;
+    private String payementStatus;
+    private String invoiceAccount;
 
 
 }
