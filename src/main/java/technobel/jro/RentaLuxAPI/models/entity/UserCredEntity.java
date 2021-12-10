@@ -1,11 +1,6 @@
 package technobel.jro.RentaLuxAPI.models.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +16,8 @@ import java.util.stream.Collectors;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "CLIENT_DISC")
 
 public class UserCredEntity implements UserDetails  {
 
@@ -40,21 +37,17 @@ public class UserCredEntity implements UserDetails  {
     private String accountType;
 
 
-    @ElementCollection (fetch = FetchType.EAGER)
+    @Column(nullable = false)
+    private boolean accountNonExpired = true;
+    @Column(nullable = false)
+    private boolean accountNonLocked = true;
+    @Column(nullable = false)
+    private boolean credentialsNonExpired = true;
+    @Column(nullable = false)
+    private boolean enabled = true;
+
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
-
-
-    @LazyCollection(LazyCollectionOption.FALSE)
-
-
-    @Column(nullable = false)
-    private boolean accountNonExpired;
-    @Column(nullable = false)
-    private boolean accountNonLocked;
-    @Column(nullable = false)
-    private boolean credentialsNonExpired;
-    @Column(nullable = false)
-    private boolean enabled;
 
 
     @Override

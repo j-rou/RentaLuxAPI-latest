@@ -9,14 +9,26 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>technobel.jro</groupId>
-	<artifactId>javotel</artifactId>
+	<artifactId>rentalux</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>javotel</name>
-	<description>Hotel Reservation exo</description>
+	<name>rentalux</name>
+	<description>Final Project : car leasing online</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+
+<!--	===================	-->
+
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.18.2</version>
+		</dependency>
+
+<!--		===================		-->
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
