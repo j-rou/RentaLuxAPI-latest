@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/DropSite")
+@RequestMapping("/dropsite")
 public class DropSiteController {
 
     private final DropSiteService service;
@@ -18,7 +18,6 @@ public class DropSiteController {
     public DropSiteController(DropSiteService service){
         this.service = service;
     }
-
 
     @GetMapping(path = {"/getall"})
     public List<DropSiteDTO> getall(){

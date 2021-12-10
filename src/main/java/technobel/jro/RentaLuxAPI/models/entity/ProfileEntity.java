@@ -21,13 +21,15 @@ public class ProfileEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
+    @Column(nullable = false)
     private String address;
-
+    @Column(nullable = false)
     private String firstName;
-    private String lastName;
-    private String email;
 
+    private String lastName;
+    @Column(nullable = false)
+    private String email;
+    @Column(nullable = false)
     private String tel;
     private String tva;
     private int[] rentalsId;

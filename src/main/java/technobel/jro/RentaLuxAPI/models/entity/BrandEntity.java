@@ -9,20 +9,19 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name="vehicule")
+@Table(name="brand")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class VehiculeEntity {
+public class BrandEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String brand;
-    private String model;
-    private String category;
+    @Column(nullable = false)
+    private String name;
+
 
 
 }

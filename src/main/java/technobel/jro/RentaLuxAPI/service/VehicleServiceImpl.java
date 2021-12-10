@@ -4,29 +4,29 @@ package technobel.jro.RentaLuxAPI.service;
 import org.springframework.stereotype.Service;
 import technobel.jro.RentaLuxAPI.exceptions.ElementAlreadyExistsException;
 import technobel.jro.RentaLuxAPI.exceptions.ElementNotFoundException;
-import technobel.jro.RentaLuxAPI.mapper.VehiculeMapper;
-import technobel.jro.RentaLuxAPI.models.dto.VehiculeDTO;
-import technobel.jro.RentaLuxAPI.models.entity.VehiculeEntity;
-import technobel.jro.RentaLuxAPI.models.form.VehiculeForm;
-import technobel.jro.RentaLuxAPI.repository.VehiculeRepository;
+import technobel.jro.RentaLuxAPI.mapper.VehicleMapper;
+import technobel.jro.RentaLuxAPI.models.dto.VehicleDTO;
+import technobel.jro.RentaLuxAPI.models.entity.VehicleEntity;
+import technobel.jro.RentaLuxAPI.models.form.VehicleForm;
+import technobel.jro.RentaLuxAPI.repository.VehicleRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service("Vehiculeservice")
-public class VehiculeServiceImpl implements VehiculeService {
+@Service("Vehicleservice")
+public class VehicleServiceImpl implements VehicleService {
 
-    private final VehiculeMapper mapper;
-    private final VehiculeRepository repository;
+    private final VehicleMapper mapper;
+    private final VehicleRepository repository;
 
-    public VehiculeServiceImpl(VehiculeMapper mapper, VehiculeRepository repository) {
+    public VehicleServiceImpl(VehicleMapper mapper, VehicleRepository repository) {
         this.mapper = mapper;
         this.repository = repository;
     }
 
 
     @Override
-    public List<VehiculeDTO> getAll() {
+    public List<VehicleDTO> getAll() {
         return repository.findAll()
             .stream()
             .map(mapper::toDTO)
@@ -34,7 +34,7 @@ public class VehiculeServiceImpl implements VehiculeService {
     }
 
     @Override
-    public VehiculeDTO getOne(int id){
+    public VehicleDTO getOne(int id){
         return repository.findById(id)
                 .map(mapper::toDTO)
                 .orElseThrow(ElementNotFoundException::new);
@@ -42,11 +42,11 @@ public class VehiculeServiceImpl implements VehiculeService {
 
 
     @Override
-    public VehiculeDTO insert(VehiculeForm form){
+    public VehicleDTO insert(VehicleForm form){
         if( repository.existsById(form.getId()) )
             throw new ElementAlreadyExistsException();
 
-        VehiculeEntity toInsert = mapper.formToEntity(form);
+        VehicleEntity toInsert = mapper.formToEntity(form);
 
         toInsert = repository.save(toInsert);
 
@@ -54,8 +54,8 @@ public class VehiculeServiceImpl implements VehiculeService {
     }
 
     @Override
-    public VehiculeDTO delete(int id){
-        VehiculeEntity toDelete = repository.findById(id)
+    public VehicleDTO delete(int id){
+        VehicleEntity toDelete = repository.findById(id)
                 .orElseThrow(ElementNotFoundException::new);
 
         repository.delete(toDelete);
@@ -65,21 +65,32 @@ public class VehiculeServiceImpl implements VehiculeService {
     }
 
     @Override
-    public VehiculeDTO update(int id, VehiculeForm form){
+    public VehicleDTO update(int id, VehicleForm form){
 
-        VehiculeEntity toUpdate = repository.findById(id)
+        VehicleEntity toUpdate = repository.findById(id)
                 .orElseThrow(ElementNotFoundException::new);
 
         toUpdate.setId(form.getId());
         toUpdate.setBrand(form.getBrand());
         toUpdate.setModel(form.getModel());
-        toUpdate.setCategory(form.getCategory());
+        toUpdate.setUsage(form.getUsage());
 
         toUpdate = repository.save(toUpdate);
 
         return mapper.toDTO(toUpdate);
 
+    }
 
+    @Override
+    public List<VehicleDTO> getFromFilter(List<String> filtres ){
+        List<VehicleDTO> liste = null;
+
+        liste =  repository.findAll()
+                .stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
+
+        return liste;
     }
 
 

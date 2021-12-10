@@ -21,17 +21,23 @@ public class LocationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(nullable = false)
     private int profileId;
+    @Column(nullable = false)
     private int vehiculeId;
+    @Column(nullable = false)
     private int dropSiteId;
-
+    @Column(nullable = false)
     private Date startDate;
+    @Column(nullable = false)
     private Date endDate;
-
+    @Column(nullable = false)
     private boolean upclassable;
+    @Column(nullable = true)
     private int upClassVehiculeId;
-
+    @Column(nullable = false)
     private String payementStatus;
+    @Column(nullable = false)
     private String invoiceAccount;
 
 

@@ -9,17 +9,20 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name="dropsite")
+@Table(name="usageType")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class DropSiteEntity {
+public class UsageEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(nullable = false)
-    private String address;
+    private String name;
+
+
 
 }

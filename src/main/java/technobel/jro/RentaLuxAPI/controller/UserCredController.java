@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/UserCred")
+@RequestMapping("/usercred")
 public class UserCredController {
 
     private final UserCredServiceImpl service;
