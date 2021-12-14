@@ -25,8 +25,8 @@ public class VehicleController {
         return service.getAll();
     }
 
-    @GetMapping(params = {"/getone/{id}"})
-    public VehicleDTO getOne(@PathVariable int id){
+    @GetMapping(path ={"/getone"}, params = "id")
+    public VehicleDTO getOne(@RequestParam int id){
         return service.getOne(id);
     }
 

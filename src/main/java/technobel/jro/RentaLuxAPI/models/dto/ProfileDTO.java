@@ -10,14 +10,11 @@ import javax.validation.constraints.NotBlank;
 public class ProfileDTO {
 
     private int id;
-
-
-    private String address;
-
+    private String username;
     private String firstName;
     private String lastName;
     private String email;
-
+    private String address;
     private String tel;
     private String tva;
     private int[] rentalsId;

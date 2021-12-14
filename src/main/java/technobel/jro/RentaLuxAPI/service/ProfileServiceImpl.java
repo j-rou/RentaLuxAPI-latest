@@ -34,8 +34,8 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public ProfileDTO getOne(int id){
-        return repository.findById(id)
+    public ProfileDTO getProfileByUsername(String username){
+        return repository.findByUsername(username)
                 .map(mapper::toDTO)
                 .orElseThrow(ElementNotFoundException::new);
     }
@@ -71,6 +71,7 @@ public class ProfileServiceImpl implements ProfileService {
                 .orElseThrow(ElementNotFoundException::new);
 
         toUpdate.setId(form.getId());
+        toUpdate.setUsername(form.getUsername());
         toUpdate.setAddress(form.getAddress());
         toUpdate.setFirstName(form.getFirstName());
         toUpdate.setLastName(form.getLastName());

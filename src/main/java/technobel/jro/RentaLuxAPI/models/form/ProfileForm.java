@@ -11,6 +11,8 @@ public class ProfileForm {
 
     private int id;
     @NotBlank
+    private String username;
+    @NotBlank
     private String address;
     @NotBlank
     private String firstName;

@@ -56,7 +56,6 @@ public class JwtProvider {
                     .build()
                     .verify( token );
 
-            // Verifications contextuelles
             String username = decodedJWT.getSubject();
             Date expiresAt = decodedJWT.getExpiresAt();
 

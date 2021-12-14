@@ -25,10 +25,6 @@ public class ProfileController {
         return service.getAll();
     }
 
-    @GetMapping(params = {"/getone/{id}"})
-    public ProfileDTO getOne(@PathVariable int id){
-        return service.getOne(id);
-    }
 
     @PostMapping(path = {"/insert"})
     public ProfileDTO insert(@Valid @RequestBody ProfileForm form){
@@ -44,6 +40,14 @@ public class ProfileController {
     public ProfileDTO update(@RequestParam int id,@Valid @RequestBody ProfileForm form){
         return service.update(id,form);
     }
+
+
+    @GetMapping(path = {"/getbyusername"},params={"username"})
+    public ProfileDTO getProfileByEmail(@RequestParam String username){
+        return service.getProfileByUsername(username);
+    }
+
+
 
 
 

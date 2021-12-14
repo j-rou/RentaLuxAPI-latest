@@ -10,7 +10,7 @@ public interface ProfileService {
 
 
     List<ProfileDTO> getAll();
-    ProfileDTO getOne(int id);
+    ProfileDTO getProfileByUsername(String username);
     ProfileDTO insert(ProfileForm form);
     ProfileDTO delete(int id);
     ProfileDTO update(int id, ProfileForm form);

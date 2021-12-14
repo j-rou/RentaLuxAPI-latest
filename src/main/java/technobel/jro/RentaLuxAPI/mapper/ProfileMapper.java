@@ -17,6 +17,7 @@ public class ProfileMapper {
 
         return ProfileDTO.builder()
                 .id( entity.getId() )
+                .username(entity.getUsername())
                 .address( entity.getAddress() )
                 .firstName( entity.getFirstName() )
                 .lastName(entity.getLastName())
@@ -36,6 +37,7 @@ public class ProfileMapper {
         ProfileEntity Profile = new ProfileEntity();
 
         Profile.setId(form.getId());
+        Profile.setUsername(form.getUsername());
         Profile.setAddress( form.getAddress() );
         Profile.setFirstName( form.getFirstName() );
         Profile.setLastName(form.getLastName());

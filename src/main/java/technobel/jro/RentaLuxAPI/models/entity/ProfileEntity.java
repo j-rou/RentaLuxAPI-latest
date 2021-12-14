@@ -22,6 +22,8 @@ public class ProfileEntity {
     private int id;
 
     @Column(nullable = false)
+    private String username;
+    @Column(nullable = false)
     private String address;
     @Column(nullable = false)
     private String firstName;
@@ -31,6 +33,7 @@ public class ProfileEntity {
     private String email;
     @Column(nullable = false)
     private String tel;
+
     private String tva;
     private int[] rentalsId;
 
